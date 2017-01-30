@@ -1,44 +1,43 @@
 ro = 1.29;%initial ro
 gamma = 0.3;%initial
 
-n = 6000; %number of time steps
-ts = linspace(1,n,1);
+n = 100; %number of time steps
+ts = linspace(1,n,n);
 
-%initial conditions 1
-x0 = 0.666114762;
-y0 = 0.111516464;
-
-%initialize using first variables
-xt0 = ro - x0 + gamma*y0;
-yt0 = xt0;
+%initial conditions 1 and holder variables
+x0 = 0.66;
+y0 = 0.11;
 
 %output of the first parameters
-f0 = zeros(1,n);
+f0 = zeros(n,1);
 f0(1) = yt0;
 
-%initial conditions 2
-x1 = 0.136486564;
-y1 = 0.664654943;
-
-%initialize using second variables
-xt1 = ro - x1 + gamma*y1;
-yt1 = xt1;
+%initial conditions 2 and holder variables
+x1 = 0.13;
+y1 = 0.66;
 
 %output of the second parameters
-f1 = zeros(1,n);
+f1 = zeros(n,1);
 f1(1) = yt1;
 
-for t=2:n
-    xt0 = ro - xt0 + gamma*yt0;
-    yt0 = xt0;
+for t=1:n
+    x0 = xt0;
+    y0 = yt0;
+    xt0 = ro - x0^2 + gamma*y0;
+    yt0 = x0;
     
-    xt1 = ro - xt1 + gamma*yt1;
-    yt1 = xt1;
+    x1 = xt1;
+    y1 = yt1;
+    xt1 = ro - x1^2 + gamma*y1;
+    yt1 = x1;
     
     f0(t) = yt0;
     f1(t) = yt1;
 end
 
-
-subplot(1,2,1)
-plot(f0,ts,f1,ts)
+figure(1)
+plot(ts,f0,ts,f1)
+xlabel('time steps')
+ylabel('y values')
+legend('x_0 = 0.66, y_0 = 0.11', 'x_0 = 0.13, y_0 = 0.66')
+hold on;

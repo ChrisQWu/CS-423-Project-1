@@ -1,0 +1,21 @@
+ro = 1.29;%initial ro
+gamma = 0.3;%initial
+
+n = 6000; %number of time steps
+
+%initial conditions 1
+x0 = 0.666114762;
+y0 = 0.111516464;
+
+%initialize using first variables
+xt0 = ro - x0 + gamma*y0;
+yt0 = xt0s;
+
+%initial conditions 2
+x1 = 0.136486564;
+y1 = 0.664654943;
+
+%initialize using second variables
+xt1 = ro - x1 + gamma*y1;
+yt1 = xt1s;
+

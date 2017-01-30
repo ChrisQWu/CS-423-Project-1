@@ -9,31 +9,16 @@ x0 = 0.66;
 y0 = 0.11;
 
 %output of the first parameters
-f0 = zeros(n,1);
-f0(1) = yt0;
+[xs,ys] = dynamical(x0,y0,ro,gamma,n);
+f0 = ys;
 
 %initial conditions 2 and holder variables
 x1 = 0.13;
 y1 = 0.66;
 
 %output of the second parameters
-f1 = zeros(n,1);
-f1(1) = yt1;
-
-for t=1:n
-    x0 = xt0;
-    y0 = yt0;
-    xt0 = ro - x0^2 + gamma*y0;
-    yt0 = x0;
-    
-    x1 = xt1;
-    y1 = yt1;
-    xt1 = ro - x1^2 + gamma*y1;
-    yt1 = x1;
-    
-    f0(t) = yt0;
-    f1(t) = yt1;
-end
+[xs,ys] = dynamical(x1,y1,ro,gamma,n);
+f1 = ys;
 
 figure(1)
 plot(ts,f0,ts,f1)

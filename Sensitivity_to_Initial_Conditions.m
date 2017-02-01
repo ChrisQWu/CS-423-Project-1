@@ -9,20 +9,20 @@ x0 = 0.66;
 y0 = 0.11;
 
 %output of the first parameters
-[xs,ys] = dynamical(x0,y0,ro,gamma,n);
+ys = dynamical(x0,y0,ro,gamma,n);
 f0 = ys;
 
 %initial conditions 2 and holder variables
-x1 = 0.13;
+x1 = 0.66;
 y1 = 0.66;
 
 %output of the second parameters
-[xs,ys] = dynamical(x1,y1,ro,gamma,n);
+ys = dynamical(x1,y1,ro,gamma,n);
 f1 = ys;
 
 figure(1)
 plot(ts,f0,ts,f1)
 xlabel('time steps')
 ylabel('y values')
-legend('x_0 = 0.66, y_0 = 0.11', 'x_0 = 0.13, y_0 = 0.66')
+legend('x_0 = 0.66, y_0 = 0.11', 'x_0 = 0.66, y_0 = 0.66')
 hold on;

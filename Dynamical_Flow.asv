@@ -1,9 +1,0 @@
-alpha = 0.2;
-beta = 0.2;
-gamma = 5.7;
-
-
-%x-prime, y-prime, z-prime
-xp = x*y - x*gamma + alpha;
-yp = -z - x;
-zp = beta*z + y;

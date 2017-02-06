@@ -1,33 +1,34 @@
-ro = 1.29;%initial ro
-gamma = 0.3;%initial
+function Sensitivity_to_Initial_Conditions
+    ro = 1.29;%initial ro
+    gamma = 0.3;%initial
 
-n = 100; %number of time steps
-ts = linspace(1,n,n);
+    n = 100; %number of time steps
+    ts = linspace(1,n);
 
-%initial conditions 1 and holder variables
-x0 = 0.66;
-y0 = 0.11;
+    %initial conditions 1 and holder variables
+    x0 = 0.66;
+    y0 = 0.11;
 
-%output of the first parameters
-ys = dynamical(x0,y0,ro,gamma,n);
-f0 = ys;
+    %output of the first parameters
+    y = dynamical(x0,y0,ro,gamma,n);
+    f0 = y;
 
-%initial conditions 2 and holder variables
-x1 = 0.66;
-y1 = 0.66;
+    %initial conditions 2 and holder variables
+    x1 = 0.66;
+    y1 = 0.66;
 
-%output of the second parameters
-ys = dynamical(x1,y1,ro,gamma,n);
-f1 = ys;
+    %output of the second parameters
+    y = dynamical(x1,y1,ro,gamma,n);
+    f1 = y;
+    figure();
+    subplot(1,2,1);
+    plot(ts,f0(1:n),ts,f1(1:n))
+    xlabel('time steps')
+    ylabel('y values')
+    legend('x_0 = 0.66, y_0 = 0.11', 'x_0 = 0.66, y_0 = 0.66')
 
-figure(2)
-subplot(1,2,1);
-plot(ts,f0,ts,f1)
-xlabel('time steps')
-ylabel('y values')
-legend('x_0 = 0.66, y_0 = 0.11', 'x_0 = 0.66, y_0 = 0.66')
-
-subplot(1,2,2);
-plot(ts,abs(f0-f1))
-xlabel('time steps')
-ylabel('difference in y values')
+    subplot(1,2,2);
+    plot(ts,abs(f0(1:n)-f1(1:n)))
+    xlabel('time steps')
+    ylabel('difference in y values')
+end

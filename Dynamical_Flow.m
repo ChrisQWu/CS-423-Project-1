@@ -6,7 +6,13 @@ gamma = 5.7;
 % beta = 0.1;
 % gamma = 14;
 
-%x-prime, y-prime, z-prime
-xp = x*y - x*gamma + alpha;
-yp = -z - x;
-zp = beta*z + y;
+t = 1000;
+
+x0 = 0.5164;
+y0 = 0.4568;
+z0 = 0.8476;
+
+[x,y,z] = dynamical3D(x0,y0,z0,alpha,beta,gamma,t);
+
+figure(1);
+plot3(x,y,z)

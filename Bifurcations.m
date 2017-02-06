@@ -7,10 +7,10 @@ x0 = 0.135649;
 y0 = 0.546912;
 
 for i = 1:n
-    xs = dynamical(x0,y0,ros(i),gamma,500);%get all x values of the 
+    x = dynamical(x0,y0,ros(i),gamma,500);%get all x values of the 
                                         %logistic map
     for k =450:500%skip the transient values and plot the end points
-        f = xs(k);
+        f = x(k);
         ro = ros(i);
         plot(ro, f,'.b');
         hold on;

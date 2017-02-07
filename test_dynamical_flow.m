@@ -7,17 +7,23 @@ gamma = 5.7;
 % gamma = 14;
 
 dt = 0.01;
-t = 10000;
+t = 100000;
 
 x0 = 0.5164;
 y0 = 0.4568;
 z0 = 0.8476;
 
-[x,y,z] = Dynamical_Flow([x0;y0;z0],alpha,beta,gamma,dt,t);
+% [x,y,z] = Dynamical_Flow([x0;y0;z0],alpha,beta,gamma,dt,t);
 
-figure(1);
+figure();
+% subplot(2,1,1);
 % plot3(x,y,z)
+% hold on;
 
 %%%%TESTING LYAPUNOV IN 3D%%%%%%%
-lyapunov3d = lyapunov_exponent3d(t-100,t, alpha,beta,linspace(0.5,1.5,t), x0, y0, z0);
-plot(linspace(0.5,1.5,t),lyapunov3d)
+gammas = linspace(0.5,1.5,1000);
+lyapunov3d = lyapunov_exponent3d(900,1000, alpha,beta,gammas, x0, y0, z0);
+% subplot(2,1,2);
+plot(gammas,lyapunov3d)
+hold on;
+% plot3(gammas,zeros(t,1),zeros(t,1))

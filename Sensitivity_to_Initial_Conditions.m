@@ -3,29 +3,31 @@ function Sensitivity_to_Initial_Conditions
     gamma = 0.3;%initial
 
     n = 100; %number of time steps
-    ts = linspace(1,n);
+    ts = linspace(1,n,n);
 
     %initial conditions 1 and holder variables
-    x0 = 0.66;
-    y0 = 0.11;
+    x0 = 0.618549;
+    y0 = 0.651234;
 
     %output of the first parameters
     y = dynamical(x0,y0,ro,gamma,n);
     f0 = y;
 
     %initial conditions 2 and holder variables
-    x1 = 0.66;
-    y1 = 0.66;
+    x1 = 0.618549;
+    y1 = 0.651233;
 
     %output of the second parameters
     y = dynamical(x1,y1,ro,gamma,n);
     f1 = y;
+    size(f1)
+    size(ts)
     figure();
     subplot(2,1,1);
     plot(ts,f0(1:n),ts,f1(1:n))
     xlabel('time steps')
     ylabel('y values')
-    legend('x_0 = 0.66, y_0 = 0.11', 'x_0 = 0.66, y_0 = 0.66')
+    legend(['x_0 = ' num2str(x0) ', y_0 = '  num2str(y0)], ['x_0 = ' num2str(x1)  ', y_0 = ' num2str(y1)])
 
     subplot(2,1,2);
     plot(ts,abs(f0(1:n)-f1(1:n)))

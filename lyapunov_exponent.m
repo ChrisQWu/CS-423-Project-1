@@ -1,4 +1,4 @@
-function lyapunov_exponent(F, F_Jacobian, t_trans, t_max, param1_range, param2, x0, y0)
+function lyapunov_exponent(t_trans, t_max, param1_range, param2, x0, y0)
     %LYAPUNOV_EXPONENT 
     current_l = 0;
     for param1=param1_range
@@ -16,4 +16,14 @@ function lyapunov_exponent(F, F_Jacobian, t_trans, t_max, param1_range, param2, 
             end
         end
     end
+end
+
+function xys = F(xy, gamma, ro)
+    xys = [ro - xy(1)*xy(1) + gamma * xy(2);
+           xy(1)];
+end
+
+function J = F_Jacobian(xy, gamma, ro)
+    J = [-2*xy(1), gamma;
+        1; 0];
 end

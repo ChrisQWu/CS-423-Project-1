@@ -1,29 +1,19 @@
-function lyapunov_exponent(t_trans, t_max, param1_range, param2, x0, y0)
-    %LYAPUNOV_EXPONENT 
-    current_l = 0;
-    for param1=param1_range
-        current_l = current_l + 1;
-        % Initialize variables
-        xy = [x0; y0]; xy_lengths = [1;0];
-        for i=1:t_max
-            J = F_Jacobian(xy, param1, param2);
-            xy=F(xy, param1, param2);
-            % Calculate divergence rate in the direction defined by the Jacobian
-            xy_lengths=J*xy_lengths;
-            if i > t_trans
-                length=sqrt(sum(xy_lengths.^2)); % Distance formula
-                max_lyapunovs(current_l) = log(length)/i; % Calculate the average
-            end
-        end
+function exponents = lyapunov_exponent(t_trans, t_max, param1_range, param2, x0, y0)
+    exponents = arrayfun(@(p1) track_exp(x0, y0, p1, param2, t_trans, t_max), param1_range);
+end
+
+function avg = track_exp(x0, y0, rho, gamma, t_trans, t_max)
+    xs = dynamical(x0, y0, rho, gamma, t_max);
+    avg = 0;
+    
+    for idx = t_trans:t_max
+        dx = xs(:, idx + 1) - xs(:, idx);
+        fp = norm(F_Jacobian(xs(:, idx), gamma) * dx) / norm(dx);
+        avg = avg + log(abs(fp)) / (t_max - t_trans + 1);
     end
 end
 
-function xys = F(xy, gamma, ro)
-    xys = [ro - xy(1)*xy(1) + gamma * xy(2);
-           xy(1)];
-end
-
-function J = F_Jacobian(xy, gamma, ro)
-    J = [-2*xy(1), gamma;
-        1; 0];
+function J = F_Jacobian(x, gamma)
+    J = [-2*x(1), gamma;
+         1      , 0    ];
 end

@@ -20,8 +20,6 @@ function Sensitivity_to_Initial_Conditions
     %output of the second parameters
     y = dynamical(x1,y1,ro,gamma,n);
     f1 = y;
-    size(f1)
-    size(ts)
     figure();
     subplot(2,1,1);
     plot(ts,f0(1:n),ts,f1(1:n))

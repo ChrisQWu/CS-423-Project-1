@@ -10,7 +10,7 @@ function run_all_plots()
     % figure 3
     Bifurcations
     % figure 4
-    lyapunov_exponent
+%     lyapunov_exponent
     
     %% Part 2
 

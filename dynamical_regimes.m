@@ -2,10 +2,6 @@ function dynamical_regimes
 %dynamical_regimes Illustrate different dynamical behaviors.
 %   Includes fixed points, limit cycles, and complex dynamics
 %   for a dynamical map. Fig 1 (a-c)
-    close all;
-    set(groot, 'defaultfigurecolor', 'white');
-    set(groot, 'defaultlinelinewidth', 1);
-    set(groot, 'defaultaxeslinewidth', 1);
     
 %     x0 = [0.4, 0.5, 0.6];
 %     y0 = [0.4, 0.5, 0.6];
@@ -60,31 +56,43 @@ function dynamical_regimes
 %     0.4000
 %     0.1000
 %     0.9000
+=======
+    plot_behavior(0.5, 0.4, 0.3667, 0.1, 30);
+    title('Fixed Point');
+    default_plot('figure1a');
+
+    plot_behavior(0.4, 0.6, 0.3667, 0.3667, 65, 10);
+    title('Limit Cycle');
+    default_plot('figure1b');
+    
+    plot_behavior(0.135649, 0.546912, 1.1, 0.3, 5000, 4900);
+    title('Complex Behavior');
+    default_plot('figure1c');
+>>>>>>> Stashed changes
 end
 
 function plot_behavior(x0, y0, rho, gamma, t_max, t_start)
     [x, y] = dynamical(x0, y0, rho, gamma, t_max);
     
     if ~exist('t_start', 'var')
-        t_start = 0;
+        t_start = 1;
     end
     
     t = t_start:t_max+1;
     
     figure(); hold on; 
     yyaxis left;
-    plot(t, x(t), 'o-');
+    plot(t-1, x(t), 'o-');
     ylabel('x_t');
     
     yyaxis right;
-    plot(t, y(t), 'x--');
+    plot(t-1, y(t), 'x--');
     ylabel('y_t');
     
     axis tight;
     
     legend('x', 'y');
     xlabel('Step');
-    title([num2str(x0) ' ' num2str(y0) ' ' num2str(rho) ' ' num2str(gamma)]);
-
+%     title([num2str(x0) ' ' num2str(y0) ' ' num2str(rho) ' ' num2str(gamma)]);
 %     uiwait;
 end

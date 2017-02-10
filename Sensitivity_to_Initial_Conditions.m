@@ -35,6 +35,7 @@ function Sensitivity_to_Initial_Conditions
     xlabel('time steps')
     ylabel('difference in y values')
     title('Difference of Plots')
+    default_plot('figure2a');
 end
 
 

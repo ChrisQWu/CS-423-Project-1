@@ -1,6 +1,10 @@
 function run_all_plots()
 %RUN_ALL_PLOTS Run all of the code necessary to generate all figures.
-
+    close all;
+    set(groot, 'defaultfigurecolor', 'white');
+    set(groot, 'defaultlinelinewidth', 1);
+    set(groot, 'defaultaxeslinewidth', 1);
+    
     %% Part 1
     
     % figure 1

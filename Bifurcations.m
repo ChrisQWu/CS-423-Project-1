@@ -1,5 +1,5 @@
 function Bifurcations
-    n = 1000; %number of steps
+    n = 2500; %number of steps
     gamma = 0.3;
     ros = linspace(0.5,1.4,n);%array of all ro's between the given range with
                                % n steps
@@ -14,8 +14,8 @@ function Bifurcations
         plot(ros(i),x(450:500),'.b', 'MarkerSize',1)
         hold on;
     end
-    xlabel('ro');
-    ylabel('F(x,y)');
-    title('Bifurcations w/ x_0 = 0.135649, y_0 = 0.546912, n = 1000');
+    xlabel('\rho');
+    ylabel('x');
+    title('Bifurcations in 2 Dimensions');
 
 end

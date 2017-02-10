@@ -21,14 +21,18 @@ function Sensitivity_to_Initial_Conditions
     y = dynamical(x1,y1,ro,gamma,n);
     f1 = y;
     figure();
-    subplot(2,1,1);
     plot(ts,f0(1:n),ts,f1(1:n))
     xlabel('time steps')
     ylabel('y values')
+    title('Sensitivity to Initial Conditions in 2 dimensions')
     legend(['x_0 = ' num2str(x0) ', y_0 = '  num2str(y0)], ['x_0 = ' num2str(x1)  ', y_0 = ' num2str(y1)])
-
-    subplot(2,1,2);
+    
+    figure();
     plot(ts,abs(f0(1:n)-f1(1:n)))
     xlabel('time steps')
     ylabel('difference in y values')
+    title('Difference of Plots')
 end
+
+
+

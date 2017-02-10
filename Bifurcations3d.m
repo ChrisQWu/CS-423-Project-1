@@ -1,22 +1,42 @@
-function Bifurcations3d
-%     betas = linspace(2,0.2,n);
-%     alphas = linspace(0.2,0.56,n);
-    x0 = 0.5;
-    y0 = 0.4;
-    z0 = 0.3;
-    dt = 0.01;
-    t = 1000;
-    alpha = 0.2;
-    beta = 0.2;
-%     gamma = 5.7;
-    figure();
-    for gamma = 0:0.01:45.0
-        [x,y,z] = Dynamical_Flow([x0;y0;z0],alpha,beta,gamma,dt,t);
-        plot(gamma, z((t-100):t),'.b','MarkerSize',1)
-        hold on;
-    end
-    xlabel('\gamma');
-    ylabel('z');
-    title(['Bifurcations w/ x_0 = ' num2str(x0) ', y_0 = ' num2str(y0) ', z_0 = ' num2str(z0) ', t = ' num2str(t) ]);
+%%This code was found at
+%%% https://www.mathworks.com/matlabcentral/fileexchange/56600-the-rossler-attractor--chaotic-simulation
+%%% The initial conditions were changed to reflect the ones we used
+%%% This code varies gamma
 
+%% This program will generate the bifurcation map for parameter a by ploting
+% a and b are fixed parameter in Rossler system while c is varying
+% arange = range for the bifurcation parameter
+% tspan = time interval for solving Rossler system by ode45()
+% x0 = [1 1 0] initial condition for solving Rossler system
+function Bifurcations3d
+    a = 0.2; b = 0.2; global c; 
+    crange = 1:0.05:35;       % Range for parameter c
+    k = 0; tspan = 0:0.1:500; % Time interval for solving Rossler system
+    xmax = [];                  % A matrix for storing the sorted value of x1
+    for c = crange 
+        f = @(t,x) [-x(2)-x(3); x(1)+a*x(2); b+x(3)*(x(1)-c)]; 
+        x0 = [0.5164, 0.4568, 0.8476];                  % initial condition for Rossler system
+        k = k + 1; 
+        [t,x] = ode45(f,tspan,x0);    % call ode() to solve Rossler system
+        count = find(t>100);          % find all the t_values which is >10
+        x = x(count,:); 
+        j = 1; 
+        n = length(x(:,1));      % find the length of vector x1(x in our problem)
+        for i=2 : n-1 
+            % check for the min value in 1st column of sol matrix
+            if (x(i-1,1)+eps) < x(i,1) && x(i,1) > (x(i+1,1)+eps)
+                xmax(k,j)=x(i,1); % Sorting the values of x1 in increasing order
+                j=j+1; 
+            end 
+        end
+        % generating bifurcation map by plotting j-1 element of kth row each time
+        if j>1 
+            plot(c,xmax(k,1:j-1),'k.','MarkerSize',1); 
+        end 
+        hold on; 
+        index(k)=j-1; 
+    end 
+    xlabel('Bifurcations in 3 Dimensions'); 
+    ylabel('x'); 
+    title('\gamma changes'); 
 end

@@ -3,6 +3,11 @@ function [x,y,z] = Dynamical_Flow(x0, alpha, beta, gamma, dt, steps)
                                 -(x(1) + x(3));
                                 x(2) + beta * x(3)];
 
-    xs = calc_iters(dx_dt_step, x0, steps);
-    x = xs(1,:); y = xs(2,:); z = xs(3,:);
+    x = calc_iters(dx_dt_step, x0, steps);
+    
+    if nargout == 3
+        y = x(2,:);
+        z = x(3,:);
+        x = x(1,:);
+    end
 end

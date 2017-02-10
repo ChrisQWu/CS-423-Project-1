@@ -10,12 +10,9 @@ function Bifurcations
     for i = 1:n
         x = dynamical(x0,y0,ros(i),gamma,500);%get all x values of the 
                                             %logistic map
-        for k =450:500%skip the transient values and plot the end points
-            f = x(k);
-            ro = ros(i);
-            plot(ro, f,'.b');
-            hold on;
-        end
+        
+        plot(ros(i),x(450:500),'.b', 'MarkerSize',1)
+        hold on;
     end
     xlabel('ro');
     ylabel('F(x,y)');

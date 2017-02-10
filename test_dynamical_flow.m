@@ -21,8 +21,8 @@ plot3(x,y,z)
 % hold on;
 
 %%%%TESTING LYAPUNOV IN 3D%%%%%%%
-gammas = linspace(0.5,1.5,10000);
-lyapunov3d = lyapunov_exponent3d(9900,10000, alpha,beta,gammas, x0, y0, z0);
+% gammas = linspace(0.5,1.5,10000);
+% lyapunov3d = lyapunov_exponent3d(9900,10000, alpha,beta,gammas, x0, y0, z0);
 % subplot(2,1,2);
 % plot(gammas,lyapunov3d)
 % hold on;

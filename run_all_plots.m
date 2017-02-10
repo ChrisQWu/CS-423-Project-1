@@ -10,7 +10,7 @@ function run_all_plots()
     % figure 3
     Bifurcations
     % figure 4
-    Lyapunov_exponents
+    lyapunov_exponent
     
     %% Part 2
     
@@ -20,8 +20,5 @@ function run_all_plots()
     Sensitivity_to_Initial_Conditions3d
     %figure 7
     Bifurcations3d
-    %figure 8
-    Lyapunov_exponents3d
-
 end
 

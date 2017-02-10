@@ -6,8 +6,8 @@ end
 function two_dimensional_map
     gamma = 0.3;
     
-    J = @(r1) @(x) [-2*x(1), r1;
-                     1     , 0 ];
+    J = @(~) @(x) [-2*x(1), gamma;
+                    1     , 0 ];
 
     t_max = 1000;
     t_trans = 100;
@@ -16,7 +16,7 @@ function two_dimensional_map
     
     trajectory = @(r1) dynamical(x0(1), x0(2), r1, gamma, t_max);
     
-    rhos = linspace(0, 1.5, 1000);
+    rhos = linspace(0.1, 1.5, 1000);
     
     exponents = arrayfun(...
         @(r1) track_exp(trajectory(r1), J(r1), t_trans, t_max), rhos);
@@ -26,6 +26,7 @@ function two_dimensional_map
     xlabel('Rho')
     ylabel('Lyapunov Exponent')
     title('Lyapunov Exponents for 2D Dynamical Map')
+    axis tight
     default_plot('figure4a');
 end
 
@@ -35,7 +36,7 @@ function three_dimensional_flow
     
     J = @(g1) @(x) [x(2) - g1 , x(1)  ,  0;
                     -1        , 0     , -1;
-                     0        , 1     , beta]; % TODO: verify
+                     0        , 1     , beta];
 
     t_max = 10000;
     t_trans = t_max / 10;
@@ -57,6 +58,7 @@ function three_dimensional_flow
     xlabel('Gamma')
     ylabel('Lyapunov Exponent')
     title('Lyapunov Exponents for 3D Dynamical Flow')
+    axis tight
     default_plot('figure4b');
 end
 

@@ -36,6 +36,7 @@ function Bifurcations3d
         hold on; 
         index(k)=j-1; 
     end 
+    default_plot('figure7')
     xlabel('Bifurcations in 3 Dimensions'); 
     ylabel('x'); 
     title('\gamma changes'); 

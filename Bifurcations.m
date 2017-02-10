@@ -14,6 +14,7 @@ function Bifurcations
         plot(ros(i),x(450:500),'.b', 'MarkerSize',1)
         hold on;
     end
+    default_plot('figure3')
     xlabel('\rho');
     ylabel('x');
     title('Bifurcations in 2 Dimensions');

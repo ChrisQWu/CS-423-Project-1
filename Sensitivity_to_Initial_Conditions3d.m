@@ -23,12 +23,14 @@ function Sensitivity_to_Initial_Conditions3d
     f1 = y;
     
     figure();
+    default_plot('figure6a')
     plot(ts,f0(1:n),ts,f1(1:n))
     xlabel('time steps')
     ylabel('y values')
     title('Sensitivity to Initial Conditions in 3 dimensions')
     legend(['x_0 = ' num2str(x0) ', y_0 = '  num2str(y0) ', z_0 = '  num2str(z0)], ['x_0 = ' num2str(x1)  ', y_0 = ' num2str(y1) ', z_0 = '  num2str(z1)])
     
+    default_plot('figure6b')
     figure();
     plot(ts,abs(f0(1:n)-f1(1:n)))
     xlabel('time steps')

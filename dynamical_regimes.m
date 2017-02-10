@@ -21,6 +21,7 @@ function dynamical_regimes
 %     end
     
     % Fixed Point
+    figure();
     plot_behavior(0.5, 0.4, 0.3667, 0.1, 35,1);
 % different x,y values for fixed point    
 %     0.4000
@@ -29,8 +30,10 @@ function dynamical_regimes
 %     0.1000
 
     % Limit Cycle
+    figure();
     plot_behavior(0.4, 0.6, 0.3667, 0.3667, 65, 10);
-    default_plot('test');
+%     default_plot('test');
+    figure();
     plot_behavior(0.4, 0.4, 0.9, 0.1, 5000, 4950);
 % Complex
 %     0.4000

@@ -38,7 +38,7 @@ function plot_behavior(x0, y0, rho, gamma, t_max, t_start)
 
     t = t_start:t_max+1;
 
-    figure(); hold on;
+    figure();
     yyaxis left;
     plot(t-1, x(t), 'o-');
     ylabel('x_t');

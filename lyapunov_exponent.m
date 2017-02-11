@@ -21,7 +21,7 @@ function two_dimensional_map
     exponents = arrayfun(...
         @(r1) track_exp(trajectory(r1), J(r1), t_trans, t_max), rhos);
     
-    figure(); hold on;
+    figure();
     plot(rhos, exponents);
     xlabel('Rho')
     ylabel('Lyapunov Exponent')
@@ -53,7 +53,7 @@ function three_dimensional_flow
     exponents = arrayfun(...
         @(g1) track_exp(trajectory(g1), J(g1), t_trans, t_max), gammas);
     
-    figure(); hold on;
+    figure();
     plot(gammas, exponents);
     xlabel('Gamma')
     ylabel('Lyapunov Exponent')

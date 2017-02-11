@@ -10,7 +10,7 @@
 % x0 = [1 1 0] initial condition for solving Rossler system
 function Bifurcations3d
     a = 0.2; b = 0.2; global c; 
-    crange = 1:0.05:35;       % Range for parameter c
+    crange = 1:0.5:35;       % Range for parameter c - used in paper 1:0.05:35
     k = 0; tspan = 0:0.1:500; % Time interval for solving Rossler system
     xmax = [];                  % A matrix for storing the sorted value of x1
     for c = crange 
@@ -36,8 +36,9 @@ function Bifurcations3d
         hold on; 
         index(k)=j-1; 
     end 
-    default_plot('figure7')
     xlabel('Bifurcations in 3 Dimensions'); 
     ylabel('x'); 
     title('\gamma changes'); 
+    
+    default_plot('figure7')
 end

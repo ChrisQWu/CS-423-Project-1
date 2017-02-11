@@ -5,6 +5,8 @@ function run_all_plots()
     set(groot, 'defaultlinelinewidth', 1);
     set(groot, 'defaultaxeslinewidth', 1);
     
+    if ~exist('output', 'dir'), mkdir('output'); end
+    
     %% Part 1
     
     % figure 1
@@ -17,8 +19,6 @@ function run_all_plots()
     lyapunov_exponent
     
     %% Part 2
-    
-    %figure 5
     
     %figure 6
     Sensitivity_to_Initial_Conditions3d

@@ -1,5 +1,5 @@
 function Bifurcations
-    n = 2500; %number of steps
+    n = 500; % number of steps, figure uses 2500
     gamma = 0.3;
     ros = linspace(0.5,1.4,n);%array of all ro's between the given range with
                                % n steps
@@ -7,16 +7,16 @@ function Bifurcations
     x0 = 0.135649;
     y0 = 0.546912;
     figure();
-    for i = 1:n
+    parfor i = 1:n
         x = dynamical(x0,y0,ros(i),gamma,500);%get all x values of the 
                                             %logistic map
         
         plot(ros(i),x(450:500),'.b', 'MarkerSize',1)
         hold on;
     end
-    default_plot('figure3')
+
     xlabel('\rho');
     ylabel('x');
     title('Bifurcations in 2 Dimensions');
-
+    default_plot('figure3')
 end
